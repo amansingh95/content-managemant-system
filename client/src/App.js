@@ -7,11 +7,14 @@ import Navbar from './components/layout/Navbar';
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
+import Createprofile from "./components/profile-form/CreateProfile";
 // Redux
 import { Provider } from "react-redux";
 import  store from "./store";
 import { loadUser } from "./actions/auth";
 import setAuthToken from './utils/setAuthToken';
+import Dashboard from './components/dashboard/Dashboard';
+import  PrivateRoute  from "./components/routing/PrivateRoute";
 
 if(localStorage.token){
     setAuthToken(localStorage.token);
@@ -28,13 +31,15 @@ const App=()=>{
         <Route exact path='/' component={Landing}/>
         <section className="container">
             <Alert />
-            <switch>
+            <Switch>
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
-            </switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/create-profile" component={Createprofile} />
+            </Switch>
         </section>
         </Fragment>
     </Router>
     </Provider>
 )};
-export default App;
+export default App; 
