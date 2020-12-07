@@ -24,7 +24,7 @@ router.post('/', [
         if(user){
             return res.status(400).json({errors:[{msg:'user allready Exist'}]});
         }
-        const avatar=gravatar.url('email',{
+        const avatar=gravatar.url(email,{
             s:'200',
             r:'pg',
             d:"mm"

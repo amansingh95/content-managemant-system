@@ -12,12 +12,14 @@ import Experience from "./Experience";
 const Dashboard = ({getCurrentProfile, auth:{user},deleteAccount, profile:{profile, loading}}) =>{
    useEffect(()=>{
        getCurrentProfile();
-   }, []);
+   }, [getCurrentProfile]);
     return loading && profile===null ? (<Spinner /> ): (<Fragment>
         <h1 className="large text-primary">Dashboard</h1>
+       
         <p className="lead">
-            <i className="fas fa-user"></i> Welcome {user && user.name}
+            <i className="fas fa-user"></i> Welcome {user && user.user.name}
         </p> 
+        
 
         {profile !== null ?(
             <Fragment>
